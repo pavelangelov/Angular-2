@@ -1,4 +1,5 @@
 import { Alignment } from "./Alignment";
+import { colors } from "../utils/console-colors";
 
 export class Creature {
     private _life: number;
@@ -33,14 +34,16 @@ export class Creature {
 
     takeHit(enemy: Creature) {
         if (this.isAlive) {
-            console.log(`${enemy.name} hitted ${this.name} with ${enemy.damage} damage!`);
+            console.log(colors.fg.Green, `${enemy.name} hitted ${this.name} with ${enemy.damage} damage!`, colors.Reset);
+            console.log(colors.fg.Crimson, `${this.name} current life is: ${this._life}!`, colors.Reset)
             this._life -= enemy.damage;
             if (this._life <= 0) {
                 this.isAlive = false;
-                console.log(`${enemy.name} killed ${this.name}`);
+                console.log("\x1b[31m");
+                console.log(colors.fg.Red, `${enemy.name} killed ${this.name}`, colors.Reset);
             }
         } else {
-            console.log(`${this.name} is dead and cannot take more hits!`);
+            console.log(colors.fg.Yellow, `${this.name} is dead and cannot take more hits!`, colors.Reset);
         }
     }
 
@@ -48,7 +51,7 @@ export class Creature {
         if (this.isAlive){
             enemy.takeHit(this);
         } else {
-            console.log(`${this.name} is dead and cannot hit enemies!`);
+            console.log(colors.fg.Yellow, `${this.name} is dead and cannot hit enemies!`, colors.Reset);
         }
     }
 }
