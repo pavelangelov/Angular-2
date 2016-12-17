@@ -1,0 +1,22 @@
+<table class="movies-list">
+    <tr class="row col-sm-12">
+        <th class="col-sm-3">Poster</th>
+        <th class="col-sm-7">Title</th>
+        <th class="col-sm-1">Year</th>
+        <th class="col-sm-1">Raiting</th>
+    </tr>
+    <tr class="movie row col-sm-12" *ngFor="let movie of movies">
+        <td class="img-container col-sm-3">
+            <img [src]="movie.Poster" alt="Poster" width="100">
+        </td>
+        <td class="title-container col-sm-7">
+            <a href="#" class="title">{{movie.Title}}</a>
+        </td>
+        <td class="year-container col-sm-1">
+            <span class="year">{{movie.Year}}</span>
+        </td>
+        <td class="raitng col-sm-1">
+            <span class="imdbRating">{{movie.imdbRating}}</span>
+        </td>
+    </tr>
+</table>
