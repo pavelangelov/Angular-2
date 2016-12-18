@@ -6,7 +6,7 @@
         <th class="col-sm-1">Raiting</th>
     </tr>
     <tbody>
-        <tr class="row col-sm-12" mvdb-movie-short *ngFor="let movie of movies" [movie]="movie"></tr>
+        <tr class="row col-sm-12" mvdb-movie-short *ngFor="let movie of (movies | sort: 'Title': 'Desc')" [movie]="movie"></tr>
         <!--<tr>
             <mvdb-movie-short *ngFor="let movie of movies" [movie]="movie"></mvdb-movie-short>
         </tr>-->
