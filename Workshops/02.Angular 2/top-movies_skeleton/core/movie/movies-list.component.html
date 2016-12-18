@@ -2,7 +2,7 @@
 <form class="col-sm-6 col-sm-offset-3">
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="text" class="form-control" id="title">
+    <input type="text" class="form-control" id="title" #search (keyup)="setSearchMovie(search.value)">
   </div>
   <div class="form-group">
       <div class="col-sm-6">
@@ -31,7 +31,7 @@
         <th class="col-sm-1">Raiting</th>
     </tr>
     <tbody>
-        <tr class="row col-sm-12" mvdb-movie-short *ngFor="let movie of (movies | sort: sortBy(): orderBy())" [movie]="movie"></tr>
+        <tr class="row col-sm-12" mvdb-movie-short *ngFor="let movie of (movies | filter: getSearchMovie() | sort: sortBy(): orderBy())" [movie]="movie"></tr>
         <!--<tr>
             <mvdb-movie-short *ngFor="let movie of movies" [movie]="movie"></mvdb-movie-short>
         </tr>-->

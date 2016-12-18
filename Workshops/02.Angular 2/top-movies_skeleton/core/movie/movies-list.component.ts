@@ -18,6 +18,7 @@ export class MoviesComponent {
 	private movies: MovieShort[] = [];
     private _sortBy: string = 'Title';
     private _orderBy: string = 'Asc';
+	private _search: string;
 
 	constructor(private http: Http) {
 		this.http.get('./data/movies.json')
@@ -25,6 +26,14 @@ export class MoviesComponent {
 			.subscribe(data => this.movies = data,
 						err => console.log(err),
 						() => console.log(this.movies));
+	}
+
+	setSearchMovie(value?: string) {
+			this._search = value;
+	}
+
+	getSearchMovie() {
+		return this._search;
 	}
 
     sortBy(value?: string) {
