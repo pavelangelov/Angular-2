@@ -1,4 +1,29 @@
-<table class="movies-list">
+<h3 class="col-sm-offset-5">Search Movie</h3>
+<form class="col-sm-6 col-sm-offset-3">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title">
+  </div>
+  <div class="form-group">
+      <div class="col-sm-6">
+        <label for="sortBy">Sort by</label>
+        <select class="form-control" id="sortBy" #sorted (change)="sortBy(sorted.value)">
+            <option value="Title" selected>Title</option>
+            <option value="Year">Year</option>
+            <option value="imdbRating">Rating</option>
+        </select>
+    </div>
+    <div class="col-sm-6">
+    <label for="orderBy">Order</label>
+        <select class="form-control" id="orderBy" #ordered (change)="orderBy(ordered.value)">
+            <option value="Asc" selected>Asc</option>
+            <option value="Desc">Desc</option>
+        </select>
+    </div>
+  </div>
+</form>
+
+<table class="col-sm-12">
     <tr class="row col-sm-12">
         <th class="col-sm-3">Poster</th>
         <th class="col-sm-7">Title</th>
@@ -6,7 +31,7 @@
         <th class="col-sm-1">Raiting</th>
     </tr>
     <tbody>
-        <tr class="row col-sm-12" mvdb-movie-short *ngFor="let movie of (movies | sort: 'Title': 'Desc')" [movie]="movie"></tr>
+        <tr class="row col-sm-12" mvdb-movie-short *ngFor="let movie of (movies | sort: sortBy(): orderBy())" [movie]="movie"></tr>
         <!--<tr>
             <mvdb-movie-short *ngFor="let movie of movies" [movie]="movie"></mvdb-movie-short>
         </tr>-->

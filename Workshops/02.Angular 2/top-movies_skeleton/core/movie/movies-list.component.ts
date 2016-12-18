@@ -16,6 +16,8 @@ import { MovieShort } from './movie-short.component';
 })
 export class MoviesComponent {
 	private movies: MovieShort[] = [];
+    private _sortBy: string = 'Title';
+    private _orderBy: string = 'Asc';
 
 	constructor(private http: Http) {
 		this.http.get('./data/movies.json')
@@ -24,4 +26,20 @@ export class MoviesComponent {
 						err => console.log(err),
 						() => console.log(this.movies));
 	}
+
+    sortBy(value?: string) {
+        if (value) {
+            this._sortBy = value;
+        } else {
+            return this._sortBy;
+        }
+    }
+
+    orderBy(value?: string) {
+        if (value) {
+            this._orderBy = value;
+        } else {
+            return this._orderBy;
+        }
+    }
 }
