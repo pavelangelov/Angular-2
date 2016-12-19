@@ -11,7 +11,7 @@ import { MovieDetails } from '../models/movie-model';
     ]
 })
 export class MovieShort {
-    @Input() movie: MovieDetails
+    @Input() movie: MovieDetails;
     get title(): string {
         return this.movie.Title;
     }

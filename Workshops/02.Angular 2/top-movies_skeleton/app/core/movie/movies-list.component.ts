@@ -1,40 +1,39 @@
 import { Component } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 
 import { MovieShort } from './movie-short.component';
 
 @Component({
-	selector: 'movies-list',
-	templateUrl: './movies-list.component.html',
-	styles: [
-		`tr {
+    selector: 'movies-list',
+    templateUrl: './movies-list.component.html',
+    styles: [
+        `tr {
             float: none;
             border-bottom: 1px solid gray;
         }`
-	]
+    ]
 })
 export class MoviesComponent {
-	private movies: MovieShort[] = [];
+    private movies: MovieShort[] = [];
     private _sortBy: string = 'Title';
     private _orderBy: string = 'Asc';
-	private _search: string;
+    private _search: string;
 
-	constructor(private http: Http) {
-		this.http.get('./data/movies.json')
-			.map(res => res.json())
-			.subscribe(data => this.movies = data,
-						err => console.log(err),
-						() => console.log(this.movies));
-	}
+    constructor(private http: Http) {
+        this.http.get('./data/movies.json')
+            .map(res => res.json())
+            .subscribe(data => this.movies = data,
+            err => console.log(err),
+            () => console.log(this.movies));
+    }
 
-	setSearchMovie(value?: string) {
-			this._search = value;
-	}
+    setSearchMovie(value?: string) {
+        this._search = value;
+    }
 
-	getSearchMovie() {
-		return this._search;
-	}
+    getSearchMovie() {
+        return this._search;
+    }
 
     sortBy(value?: string) {
         if (value) {
