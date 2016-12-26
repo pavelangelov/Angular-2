@@ -3,4 +3,5 @@ export class MovieDetails {
     Year: string;
     Poster: string;
     imdbRating: string;
+    imdbID: string;
 }

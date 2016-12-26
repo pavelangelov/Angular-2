@@ -27,4 +27,8 @@ export class MovieShort {
     get year(): string {
         return this.movie.Year;
     }
+
+    get id() {
+        return this.movie.imdbID;
+    }
 }
