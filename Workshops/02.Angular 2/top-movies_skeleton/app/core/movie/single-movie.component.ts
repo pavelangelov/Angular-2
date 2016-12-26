@@ -15,7 +15,7 @@ import { MovieDetails} from '../models/movie-details';
     ]
 })
 export class SingleMovie implements OnInit {
-    private movie: MovieDetails;
+    movie: MovieDetails;
     private movieId: string;
 
     constructor(
@@ -29,11 +29,9 @@ export class SingleMovie implements OnInit {
         this.getMovie(this.movieId);
     }
 
-    async getMovie(id: string) {
-        await this.service.getSingleMovie(id, (data: MovieDetails) => {
+    getMovie(id: string) {
+        this.service.getSingleMovie(id, (data: MovieDetails) => {
             this.movie = data;
-            console.log('Get Movie data -> ');
-            console.log(data.Title);
         });
     }
 
@@ -41,7 +39,7 @@ export class SingleMovie implements OnInit {
         if (this.movie) {
             return this.movie.Title;
         } else {
-            return 'This movie doesn`t have title :(';
+            return 'Missing movie info :(';
         }
     }
 
