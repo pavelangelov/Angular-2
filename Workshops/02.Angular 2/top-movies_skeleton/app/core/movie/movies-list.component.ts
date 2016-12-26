@@ -4,7 +4,6 @@ import { MovieService } from './movie.service';
 import { SimpleChange } from '@angular/core';
 
 @Component({
-    selector: 'movies-list',
     templateUrl: './movies-list.component.html',
     providers: [MovieService],
     styles: [
@@ -31,7 +30,6 @@ export class MoviesComponent {
     }];
 
     constructor(private service: MovieService) {
-        this.movies = this.defaultMovies;
     }
 
     setSearchMovie(value?: string) {

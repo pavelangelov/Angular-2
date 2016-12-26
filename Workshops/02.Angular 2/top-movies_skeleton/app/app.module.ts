@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { MovieService } from './core/movie/movie.service';
 import { MoviesComponent } from './core/movie/movies-list.component';
 import { SingleMovie } from './core/movie/single-movie.component';
 import { MovieShort } from './core/movie/movie-short.component';
@@ -14,10 +15,8 @@ import { FilterMoviesPipe } from './pipes/filtringPipe';
 
 const appRoutes: Routes = [
   { path: 'movie/:id', component: SingleMovie },
-  { path: '',
-    redirectTo: '/',
-    pathMatch: 'full'
-  }
+  { path: 'movies', component: MoviesComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 
 
@@ -32,6 +31,7 @@ const appRoutes: Routes = [
         FilterMoviesPipe,
         SingleMovie
         ],
+    providers: [MovieService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

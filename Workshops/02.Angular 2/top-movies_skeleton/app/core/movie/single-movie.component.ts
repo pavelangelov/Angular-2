@@ -8,14 +8,13 @@ import { MovieService } from './movie.service';
 import { MovieDetails} from '../models/movie-details';
 
 @Component({
-    selector: 'single-movie',
     providers: [MovieService],
     templateUrl: './single-movie.component.html',
     styles: [
     ]
 })
 export class SingleMovie implements OnInit {
-    movie: MovieDetails;
+    private movie: MovieDetails;
     private movieId: string;
 
     constructor(
@@ -35,17 +34,9 @@ export class SingleMovie implements OnInit {
         });
     }
 
-    get title() {
+    getKey(key: string) {
         if (this.movie) {
-            return this.movie.Title;
-        } else {
-            return 'Missing movie info :(';
-        }
-    }
-
-    get poster() {
-       if (this.movie) {
-            return this.movie.Poster;
+            return this.movie[key];
         }
     }
 }

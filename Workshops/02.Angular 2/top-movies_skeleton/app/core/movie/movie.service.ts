@@ -25,8 +25,6 @@ export class MovieService {
     getSingleMovie(imdbId: string, callback: Function) {
         this.http.get(this.baseUrl + `i=${imdbId}&plot=short&r=json`)
                 .subscribe(data => {
-                    console.log("data in service:");
-                    console.log(data);
                     callback(data.json());
                 },
                 err => console.log(err),
