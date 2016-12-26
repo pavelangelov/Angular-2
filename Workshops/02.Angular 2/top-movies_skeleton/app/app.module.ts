@@ -13,7 +13,13 @@ import { FilterMoviesPipe } from './pipes/filtringPipe';
 @NgModule({
     // put all the needed data here
     imports: [BrowserModule, HttpModule],
-    declarations: [AppComponent, MoviesComponent, MovieShort, SortMoviesPipe, FilterMoviesPipe],
+    declarations: [
+        AppComponent,
+        MoviesComponent,
+        MovieShort,
+        SortMoviesPipe,
+        FilterMoviesPipe
+        ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
